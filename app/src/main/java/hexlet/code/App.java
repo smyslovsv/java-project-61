@@ -2,6 +2,7 @@ package hexlet.code;
 
 import java.util.Scanner;
 
+import static hexlet.code.Calc.calculate;
 import static hexlet.code.Cli.greeting;
 import static hexlet.code.Even.even;
 
@@ -10,17 +11,17 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet\n2 - Even\n0 - Exit");
+        System.out.println("1 - Greet\n2 - Even\n3 - Calc\n0 - Exit");
         System.out.print("Your choice: ");
         String numberGame = scanner.next();
-        String userName;
 
         System.out.println("Welcome to the Brain Games!");
         if (Integer.parseInt(numberGame) == 1) {
-            userName = greeting(scanner);
+            greeting(scanner);
         } else if (Integer.parseInt(numberGame) == 2) {
-            userName = greeting(scanner);
-            even(scanner, userName);
+            even(scanner, greeting(scanner));
+        } else if (Integer.parseInt(numberGame) == 3) {
+            calculate(scanner, greeting(scanner));
         }
         scanner.close();
     }
