@@ -25,7 +25,7 @@ public class Gcd implements Game {
     @Override
     public void printConditions() {
         System.out.println("Question: " + firstNumber + " " + secondNumber);
-        System.out.println(correctAnswer);
+        //System.out.println(correctAnswer);
     }
 
     @Override

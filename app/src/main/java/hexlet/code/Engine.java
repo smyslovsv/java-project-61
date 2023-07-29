@@ -13,6 +13,7 @@ public class Engine {
         for (int i = 0; i < countGame; i++) {
             game.setRoundConditions();
             game.printConditions();
+            System.out.print("Your answer: ");
 
             if (game.checkAnswer(scanner.next())) {
                 countCorrectAnswer++;
