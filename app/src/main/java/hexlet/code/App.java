@@ -1,10 +1,10 @@
 package hexlet.code;
 
+import hexlet.code.games.*;
+
 import java.util.Scanner;
 
-import static hexlet.code.Calc.calculate;
-import static hexlet.code.Cli.greeting;
-import static hexlet.code.Even.even;
+import static hexlet.code.games.Cli.greeting;
 
 public class App {
     public static void main(String[] args) {
@@ -16,12 +16,17 @@ public class App {
         String numberGame = scanner.next();
 
         System.out.println("Welcome to the Brain Games!");
+
         if (Integer.parseInt(numberGame) == 1) {
             greeting(scanner);
         } else if (Integer.parseInt(numberGame) == 2) {
-            even(scanner, greeting(scanner));
+            String userName = greeting(scanner);
+            Game game = new Even();
+            Engine.play(scanner, game, userName);
         } else if (Integer.parseInt(numberGame) == 3) {
-            calculate(scanner, greeting(scanner));
+            String userName = greeting(scanner);
+            Game game = new Calc();
+            Engine.play(scanner, game, userName);
         }
         scanner.close();
     }

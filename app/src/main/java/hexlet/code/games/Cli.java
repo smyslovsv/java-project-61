@@ -1,10 +1,10 @@
-package hexlet.code;
+package hexlet.code.games;
 
 import java.util.Scanner;
 
 public class Cli {
 
-    static String greeting(Scanner scanner) {
+    public static String greeting(Scanner scanner) {
 
         System.out.print("May I have your name? ");
         String userName = scanner.next();
