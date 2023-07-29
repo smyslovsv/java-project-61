@@ -21,12 +21,6 @@ public class Calc implements Game {
         firstOperand = random.nextInt(upperRange);
         secondOperand = random.nextInt(upperRange);
         indexOperation = random.nextInt(typeOperation.length);
-    }
-
-    @Override
-    public void printConditions() {
-        System.out.println("Question: " + firstOperand + " "
-                + typeOperation[indexOperation] + " " + secondOperand);
 
         if (indexOperation == 0) {
             correctAnswer = firstOperand + secondOperand;
@@ -35,6 +29,12 @@ public class Calc implements Game {
         } else {
             correctAnswer = firstOperand * secondOperand;
         }
+    }
+
+    @Override
+    public void printConditions() {
+        System.out.println("Question: " + firstOperand + " "
+                + typeOperation[indexOperation] + " " + secondOperand);
     }
     @Override
     public boolean checkAnswer(String answer) {
