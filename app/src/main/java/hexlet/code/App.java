@@ -1,9 +1,12 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
+import hexlet.code.games.Game;
+import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
 
 import java.util.Scanner;
 
+import static hexlet.code.Engine.play;
 import static hexlet.code.games.Cli.greeting;
 
 public class App {
@@ -22,11 +25,11 @@ public class App {
         } else if (Integer.parseInt(numberGame) == 2) {
             String userName = greeting(scanner);
             Game game = new Even();
-            Engine.play(scanner, game, userName);
+            play(scanner, game, userName);
         } else if (Integer.parseInt(numberGame) == 3) {
             String userName = greeting(scanner);
             Game game = new Calc();
-            Engine.play(scanner, game, userName);
+            play(scanner, game, userName);
         }
         scanner.close();
     }

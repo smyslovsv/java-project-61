@@ -7,20 +7,14 @@ import java.util.Scanner;
 public class Engine {
     static int countGame = 3;
     static int countCorrectAnswer = 0;
-    static String userName;
-
     public static void play(Scanner scanner, Game game, String userName) {
-        Engine.userName = userName;
-
         game.welcomeMassage();
 
         for (int i = 0; i < countGame; i++) {
             game.setRoundConditions();
             game.printConditions();
 
-            boolean check = game.checkAnswer(scanner.next());
-
-            if (check) {
+            if (game.checkAnswer(scanner.next())) {
                 countCorrectAnswer++;
             } else {
                 i = countGame;
