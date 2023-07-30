@@ -11,9 +11,9 @@ repositories {
     mavenCentral()
 }
 
-compileJava {
-    options.release = 20
-}
+/*compileJava {
+    options.release = 19 as Property<Integer>
+}*/
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.2')
