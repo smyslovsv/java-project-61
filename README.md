@@ -12,3 +12,5 @@
 
 ![image](https://github.com/smyslovsv/java-project-61/assets/65950515/a7e876ce-85ae-4ef0-b8bd-f4fe19c2b364)
 
+![image](https://github.com/smyslovsv/java-project-61/assets/65950515/af7439a0-da7a-422f-9497-da3f25d4bb55)
+
