@@ -1,13 +1,8 @@
 package hexlet.code;
 
-import java.util.Scanner;
+import hexlet.code.games.*;
 
-import static hexlet.code.games.Calc.calc;
-import static hexlet.code.games.Cli.greeting;
-import static hexlet.code.games.Even.even;
-import static hexlet.code.games.Gcd.gcd;
-import static hexlet.code.games.Prime.prime;
-import static hexlet.code.games.Progression.progression;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
@@ -25,12 +20,12 @@ public class App {
         System.out.println("Welcome to the Brain Games!");
 
         switch (Integer.parseInt(numberGame)) {
-            case (1) -> greeting(scanner);
-            case (2) -> even(scanner);
-            case (3) -> calc(scanner);
-            case (4) -> gcd(scanner);
-            case (5) -> progression(scanner);
-            case (6) -> prime(scanner);
+            case (1) -> Cli.greeting(scanner);
+            case (2) -> Even.even(scanner);
+            case (3) -> Calc.calc(scanner);
+            case (4) -> Gcd.gcd(scanner);
+            case (5) -> Progression.progression(scanner);
+            case (6) -> Prime.prime(scanner);
             default -> System.out.println("Wrong variant");
         }
         scanner.close();
