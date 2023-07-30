@@ -1,16 +1,13 @@
 package hexlet.code;
 
-import hexlet.code.games.Game;
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.Gcd;
-import hexlet.code.games.Progression;
-import hexlet.code.games.Prime;
-
 import java.util.Scanner;
 
-import static hexlet.code.Engine.play;
+import static hexlet.code.games.Calc.calc;
 import static hexlet.code.games.Cli.greeting;
+import static hexlet.code.games.Even.even;
+import static hexlet.code.games.Gcd.gcd;
+import static hexlet.code.games.Prime.prime;
+import static hexlet.code.games.Progression.progression;
 
 public class App {
     public static void main(String[] args) {
@@ -23,28 +20,18 @@ public class App {
         System.out.print("\n");
 
         if (Integer.parseInt(numberGame) == 0) {
-            scanner.close();
             return;
         }
         System.out.println("Welcome to the Brain Games!");
 
-        Game game = null;
         switch (Integer.parseInt(numberGame)) {
             case (1) -> greeting(scanner);
-            case (2) -> game = new Even();
-            case (3) -> game = new Calc();
-            case (4) -> game = new Gcd();
-            case (5) -> game = new Progression();
-            case (6) -> game = new Prime();
-            default -> {
-                System.out.println("Wrong variant");
-                return;
-            }
-        }
-
-        if (game != null) {
-            String userName = greeting(scanner);
-            play(scanner, game, userName);
+            case (2) -> even(scanner);
+            case (3) -> calc(scanner);
+            case (4) -> gcd(scanner);
+            case (5) -> progression(scanner);
+            case (6) -> prime(scanner);
+            default -> System.out.println("Wrong variant");
         }
         scanner.close();
     }

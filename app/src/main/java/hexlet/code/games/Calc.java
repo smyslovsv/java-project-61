@@ -1,22 +1,32 @@
 package hexlet.code.games;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public class Calc implements Game {
+import static hexlet.code.Engine.engine;
+
+public class Calc {
     static int upperRange = 10;
     static int firstOperand = 0;
     static int secondOperand = 0;
     static int indexOperation = 0;
     static String[] typeOperation = {"+", "-", "*"};
     static int correctAnswer = 0;
+    static int countGame = 3;
+    static String welcome = "What is the result of the expression?";
+    static String[] questions = {"", "", ""};
+    static String[] correctAnswers = {"", "", ""};
 
-    @Override
-    public void welcomeMassage() {
-        System.out.println("What is the result of the expression?");
+    public static void calc(Scanner scanner) {
+        for (int i = 0; i < countGame; i++) {
+            setRoundConditions();
+            questions[i] = getCondition();
+            correctAnswers[i] = String.valueOf(correctAnswer);
+        }
+        engine(scanner, welcome, questions, correctAnswers);
     }
 
-    @Override
-    public void setRoundConditions() {
+    public static void setRoundConditions() {
         Random random = new Random();
         firstOperand = random.nextInt(upperRange);
         secondOperand = random.nextInt(upperRange);
@@ -31,19 +41,7 @@ public class Calc implements Game {
         }
     }
 
-    @Override
-    public void printConditions() {
-        System.out.println("Question: " + firstOperand + " "
-                + typeOperation[indexOperation] + " " + secondOperand);
-    }
-    @Override
-    public boolean checkAnswer(String answer) {
-        if (Integer.parseInt(answer) == correctAnswer) {
-            System.out.println("Correct!");
-            return true;
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was " + correctAnswer + "'.");
-            return false;
-        }
+    public static String getCondition() {
+        return firstOperand + " " + typeOperation[indexOperation] + " " + secondOperand;
     }
 }

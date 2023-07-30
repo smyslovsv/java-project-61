@@ -2,59 +2,44 @@ package hexlet.code.games;
 
 import java.math.BigInteger;
 import java.util.Random;
+import java.util.Scanner;
 
-public class Prime implements Game {
+import static hexlet.code.Engine.engine;
+
+public class Prime {
     static int upperRange = 100;
     static int number = 0;
-    @Override
-    public void welcomeMassage() {
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+    static int countGame = 3;
+    static String welcome = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    static String[] questions = {"", "", ""};
+    static String[] correctAnswers = {"", "", ""};
+
+    public static void prime(Scanner scanner) {
+        for (int i = 0; i < countGame; i++) {
+            setRoundConditions();
+            questions[i] = getCondition();
+            correctAnswers[i] = checkAnswer();
+        }
+        engine(scanner, welcome, questions, correctAnswers);
     }
 
-    @Override
-    public void setRoundConditions() {
+    public static void setRoundConditions() {
         Random random = new Random();
         number = random.nextInt(upperRange);
     }
 
-    @Override
-    public void printConditions() {
-        System.out.println("Question: " + number);
+    public static String getCondition() {
+        return String.valueOf(number);
     }
 
-    @Override
-    public boolean checkAnswer(String answer) {
+    public static String checkAnswer() {
         BigInteger bigInteger = BigInteger.valueOf(number);
         boolean probablePrime = bigInteger.isProbablePrime((int) Math.log(number));
 
-        switch (answer) {
-            case "yes" -> {
-                if (probablePrime) {
-                    System.out.println("Correct!");
-                    return true;
-                } else {
-                    System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.");
-                    return false;
-                }
-            }
-            case  "no" -> {
-                if (!probablePrime) {
-                    System.out.println("Correct!");
-                    return true;
-                } else {
-                    System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.");
-                    return false;
-                }
-            }
-            default -> {
-                System.out.print("'" + answer + "' is wrong answer ;(. Correct answer was ");
-                if (probablePrime) {
-                    System.out.println("'yes'.");
-                } else {
-                    System.out.println("'no'.");
-                }
-                return false;
-            }
+        if (probablePrime) {
+            return "yes";
+        } else {
+            return "no";
         }
     }
 }

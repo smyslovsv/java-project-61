@@ -1,20 +1,30 @@
 package hexlet.code.games;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public class Gcd implements Game {
+import static hexlet.code.Engine.engine;
+
+public class Gcd {
     static int upperRange = 100;
     static int firstNumber = 0;
     static int secondNumber = 0;
     static int correctAnswer = 0;
+    static int countGame = 3;
+    static String welcome = "Find the greatest common divisor of given numbers.";
+    static String[] questions = {"", "", ""};
+    static String[] correctAnswers = {"", "", ""};
 
-    @Override
-    public void welcomeMassage() {
-        System.out.println("Find the greatest common divisor of given numbers.");
+    public static void gcd(Scanner scanner) {
+        for (int i = 0; i < countGame; i++) {
+            setRoundConditions();
+            questions[i] = getCondition();
+            correctAnswers[i] = String.valueOf(correctAnswer);
+        }
+        engine(scanner, welcome, questions, correctAnswers);
     }
 
-    @Override
-    public void setRoundConditions() {
+    public static void setRoundConditions() {
         Random random = new Random();
         firstNumber = random.nextInt(upperRange);
         secondNumber = random.nextInt(upperRange);
@@ -22,23 +32,11 @@ public class Gcd implements Game {
         correctAnswer = gcdByEuclidsAlgorithm(firstNumber, secondNumber);
     }
 
-    @Override
-    public void printConditions() {
-        System.out.println("Question: " + firstNumber + " " + secondNumber);
+    public static String getCondition() {
+        return firstNumber + " " + secondNumber;
     }
 
-    @Override
-    public boolean checkAnswer(String answer) {
-        if (Integer.parseInt(answer) == correctAnswer) {
-            System.out.println("Correct!");
-            return true;
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was " + correctAnswer + "'.");
-            return false;
-        }
-    }
-
-    int gcdByEuclidsAlgorithm(int n1, int n2) {
+    static int gcdByEuclidsAlgorithm(int n1, int n2) {
         if (n2 == 0) {
             return n1;
         }

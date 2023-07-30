@@ -1,21 +1,32 @@
 package hexlet.code.games;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public class Progression implements Game {
+import static hexlet.code.Engine.engine;
+
+public class Progression {
     static int upperRange = 10;
     static int firstElement = 0;
     static int countElements = 10;
     static int deltaElements = 0;
     static int indexElement = 0;
     static int correctAnswer = 0;
-    @Override
-    public void welcomeMassage() {
-        System.out.println("What number is missing in the progression?");
-    }
 
-    @Override
-    public void setRoundConditions() {
+    static int countGame = 3;
+    static String welcome = "What number is missing in the progression?";
+    static String[] questions = {"", "", ""};
+    static String[] correctAnswers = {"", "", ""};
+
+    public static void progression(Scanner scanner) {
+        for (int i = 0; i < countGame; i++) {
+            setRoundConditions();
+            questions[i] = getCondition();
+            correctAnswers[i] = String.valueOf(firstElement + indexElement * deltaElements);
+        }
+        engine(scanner, welcome, questions, correctAnswers);
+    }
+    public static void setRoundConditions() {
         Random random = new Random();
         firstElement = random.nextInt(upperRange);
         indexElement = random.nextInt(countElements);
@@ -24,26 +35,15 @@ public class Progression implements Game {
         correctAnswer = firstElement + indexElement * deltaElements;
     }
 
-    @Override
-    public void printConditions() {
+    public static String getCondition() {
+        StringBuilder condition = new StringBuilder();
         for (int i = 0; i < countElements; i++) {
             if (i != indexElement) {
-                System.out.print((firstElement + i * deltaElements) + " ");
+                condition.append((firstElement + i * deltaElements)).append(" ");
             } else {
-                System.out.print(".. ");
+                condition.append(".. ");
             }
         }
-        System.out.print("\n");
-    }
-
-    @Override
-    public boolean checkAnswer(String answer) {
-        if (Integer.parseInt(answer) == correctAnswer) {
-            System.out.println("Correct!");
-            return true;
-        } else {
-            System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was " + correctAnswer + "'.");
-            return false;
-        }
+        return condition.toString();
     }
 }
