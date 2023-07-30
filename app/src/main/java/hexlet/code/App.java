@@ -1,9 +1,10 @@
 package hexlet.code;
 
 import hexlet.code.games.Game;
-import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
 import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -15,25 +16,32 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n0 - Exit");
+        System.out.println("1 - Greet\n2 - Even\n3 - Calc\n4 - GCD\n5 - Progression\n0 - Exit");
         System.out.print("Your choice: ");
         String numberGame = scanner.next();
+        System.out.print("\n");
 
+        if (Integer.parseInt(numberGame) == 0) {
+            scanner.close();
+            return;
+        }
         System.out.println("Welcome to the Brain Games!");
 
-        if (Integer.parseInt(numberGame) == 1) {
-            greeting(scanner);
-        } else if (Integer.parseInt(numberGame) == 2) {
+        Game game = null;
+        switch (Integer.parseInt(numberGame)) {
+            case (1) -> greeting(scanner);
+            case (2) -> game = new Even();
+            case (3) -> game = new Calc();
+            case (4) -> game = new Gcd();
+            case (5) -> game = new Progression();
+            default -> {
+                System.out.println("Wrong variant");
+                return;
+            }
+        }
+
+        if (game != null) {
             String userName = greeting(scanner);
-            Game game = new Even();
-            play(scanner, game, userName);
-        } else if (Integer.parseInt(numberGame) == 3) {
-            String userName = greeting(scanner);
-            Game game = new Calc();
-            play(scanner, game, userName);
-        } else if (Integer.parseInt(numberGame) == 4) {
-            String userName = greeting(scanner);
-            Game game = new Gcd();
             play(scanner, game, userName);
         }
         scanner.close();
