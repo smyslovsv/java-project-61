@@ -1,6 +1,13 @@
 .gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
+build
+
+**/logs/
+
+.settings
+bin
+.project*
+.classpath
+.idea/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -14,10 +21,8 @@ out/
 
 ### Eclipse ###
 .apt_generated
-.classpath
 .factorypath
 .project
-.settings
 .springBeans
 .sts4-cache
 bin/
