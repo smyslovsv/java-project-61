@@ -5,8 +5,8 @@ import java.util.Scanner;
 import static hexlet.code.games.Cli.greeting;
 
 public class Engine {
-    static int countCorrectAnswer = 0;
     public static void engine(Scanner scanner, String message, String[] questions, String[] correctAnswers) {
+        int countCorrectAnswer = 0;
         String userName = greeting(scanner);
         System.out.println(message);
 

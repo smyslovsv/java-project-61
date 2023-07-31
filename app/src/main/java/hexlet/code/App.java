@@ -10,6 +10,12 @@ import hexlet.code.games.Even;
 import java.util.Scanner;
 
 public class App {
+    private static final int GREET = 1;
+    private static final int EVEN = 2;
+    private static final int CALC = 3;
+    private static final int GCD = 4;
+    private static final int PROGRESSION = 5;
+    private static final int PRIME = 6;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -25,12 +31,12 @@ public class App {
         System.out.println("Welcome to the Brain Games!");
 
         switch (Integer.parseInt(numberGame)) {
-            case (1) -> Cli.greeting(scanner);
-            case (2) -> Even.even(scanner);
-            case (3) -> Calc.calc(scanner);
-            case (4) -> Gcd.gcd(scanner);
-            case (5) -> Progression.progression(scanner);
-            case (6) -> Prime.prime(scanner);
+            case (GREET) -> Cli.greeting(scanner);
+            case (EVEN) -> Even.even(scanner);
+            case (CALC) -> Calc.calc(scanner);
+            case (GCD) -> Gcd.gcd(scanner);
+            case (PROGRESSION) -> Progression.progression(scanner);
+            case (PRIME) -> Prime.prime(scanner);
             default -> System.out.println("Wrong variant");
         }
         scanner.close();
