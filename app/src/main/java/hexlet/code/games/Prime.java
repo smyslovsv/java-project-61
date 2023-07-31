@@ -7,32 +7,32 @@ import java.util.Scanner;
 import static hexlet.code.Engine.engine;
 
 public class Prime {
-    static int upperRange = 100;
+    private static final int UPPER_RANGE = 100;
+    private static final int COUNT_GAME = 3;
+    private static final String WELCOME = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     static int number = 0;
-    static int countGame = 3;
-    static String welcome = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     static String[] questions = {"", "", ""};
     static String[] correctAnswers = {"", "", ""};
 
     public static void prime(Scanner scanner) {
-        for (int i = 0; i < countGame; i++) {
+        for (int i = 0; i < COUNT_GAME; i++) {
             setRoundConditions();
             questions[i] = getCondition();
             correctAnswers[i] = checkAnswer();
         }
-        engine(scanner, welcome, questions, correctAnswers);
+        engine(scanner, WELCOME, questions, correctAnswers);
     }
 
-    public static void setRoundConditions() {
+    private static void setRoundConditions() {
         Random random = new Random();
-        number = random.nextInt(upperRange);
+        number = random.nextInt(UPPER_RANGE);
     }
 
-    public static String getCondition() {
+    private static String getCondition() {
         return String.valueOf(number);
     }
 
-    public static String checkAnswer() {
+    private static String checkAnswer() {
         BigInteger bigInteger = BigInteger.valueOf(number);
         boolean probablePrime = bigInteger.isProbablePrime((int) Math.log(number));
 

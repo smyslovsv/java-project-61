@@ -6,31 +6,31 @@ import java.util.Scanner;
 import static hexlet.code.Engine.engine;
 
 public class Calc {
-    static int upperRange = 10;
-    static int firstOperand = 0;
-    static int secondOperand = 0;
-    static int indexOperation = 0;
-    static String[] typeOperation = {"+", "-", "*"};
-    static int correctAnswer = 0;
-    static int countGame = 3;
-    static String welcome = "What is the result of the expression?";
-    static String[] questions = {"", "", ""};
-    static String[] correctAnswers = {"", "", ""};
+    private static final int UPPER_RANGE = 10;
+    private static int firstOperand = 0;
+    private static int secondOperand = 0;
+    private static int indexOperation = 0;
+    private static final String[] TYPE_OPERATION = {"+", "-", "*"};
+    private static int correctAnswer = 0;
+    private static final int COUNT_GAME = 3;
+    private static final String WELCOME = "What is the result of the expression?";
+    private static String[] questions = {"", "", ""};
+    private static String[] correctAnswers = {"", "", ""};
 
     public static void calc(Scanner scanner) {
-        for (int i = 0; i < countGame; i++) {
+        for (int i = 0; i < COUNT_GAME; i++) {
             setRoundConditions();
             questions[i] = getCondition();
             correctAnswers[i] = String.valueOf(correctAnswer);
         }
-        engine(scanner, welcome, questions, correctAnswers);
+        engine(scanner, WELCOME, questions, correctAnswers);
     }
 
-    public static void setRoundConditions() {
+    private static void setRoundConditions() {
         Random random = new Random();
-        firstOperand = random.nextInt(upperRange);
-        secondOperand = random.nextInt(upperRange);
-        indexOperation = random.nextInt(typeOperation.length);
+        firstOperand = random.nextInt(UPPER_RANGE);
+        secondOperand = random.nextInt(UPPER_RANGE);
+        indexOperation = random.nextInt(TYPE_OPERATION.length);
 
         if (indexOperation == 0) {
             correctAnswer = firstOperand + secondOperand;
@@ -41,7 +41,7 @@ public class Calc {
         }
     }
 
-    public static String getCondition() {
-        return firstOperand + " " + typeOperation[indexOperation] + " " + secondOperand;
+    private static String getCondition() {
+        return firstOperand + " " + TYPE_OPERATION[indexOperation] + " " + secondOperand;
     }
 }

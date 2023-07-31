@@ -6,37 +6,37 @@ import java.util.Scanner;
 import static hexlet.code.Engine.engine;
 
 public class Gcd {
-    static int upperRange = 100;
-    static int firstNumber = 0;
-    static int secondNumber = 0;
-    static int correctAnswer = 0;
-    static int countGame = 3;
-    static String welcome = "Find the greatest common divisor of given numbers.";
-    static String[] questions = {"", "", ""};
-    static String[] correctAnswers = {"", "", ""};
+    private static final int UPPER_RANGE = 100;
+    private static final int COUNT_GAME = 3;
+    private static final String WELCOME = "Find the greatest common divisor of given numbers.";
+    private static int firstNumber = 0;
+    private static int secondNumber = 0;
+    private static int correctAnswer = 0;
+    private static String[] questions = {"", "", ""};
+    private static String[] correctAnswers = {"", "", ""};
 
     public static void gcd(Scanner scanner) {
-        for (int i = 0; i < countGame; i++) {
+        for (int i = 0; i < COUNT_GAME; i++) {
             setRoundConditions();
             questions[i] = getCondition();
             correctAnswers[i] = String.valueOf(correctAnswer);
         }
-        engine(scanner, welcome, questions, correctAnswers);
+        engine(scanner, WELCOME, questions, correctAnswers);
     }
 
-    public static void setRoundConditions() {
+    private static void setRoundConditions() {
         Random random = new Random();
-        firstNumber = random.nextInt(upperRange);
-        secondNumber = random.nextInt(upperRange);
+        firstNumber = random.nextInt(UPPER_RANGE);
+        secondNumber = random.nextInt(UPPER_RANGE);
 
         correctAnswer = gcdByEuclidsAlgorithm(firstNumber, secondNumber);
     }
 
-    public static String getCondition() {
+    private static String getCondition() {
         return firstNumber + " " + secondNumber;
     }
 
-    static int gcdByEuclidsAlgorithm(int n1, int n2) {
+    private static int gcdByEuclidsAlgorithm(int n1, int n2) {
         if (n2 == 0) {
             return n1;
         }
