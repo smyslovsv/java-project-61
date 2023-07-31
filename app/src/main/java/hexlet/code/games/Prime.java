@@ -10,9 +10,9 @@ public class Prime {
     private static final int UPPER_RANGE = 100;
     private static final int COUNT_GAME = 3;
     private static final String WELCOME = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    static int number = 0;
-    static String[] questions = {"", "", ""};
-    static String[] correctAnswers = {"", "", ""};
+    private static int number = 0;
+    private static String[] questions = {"", "", ""};
+    private static String[] correctAnswers = {"", "", ""};
 
     public static void prime(Scanner scanner) {
         for (int i = 0; i < COUNT_GAME; i++) {
